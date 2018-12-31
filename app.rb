@@ -8,6 +8,17 @@ class App < Sinatra::Base
   enable :sessions
 
   get '/' do
+    erb :index
+  end
+
+  post '/names' do
+    @player_1_name = params[:player_1_name]
+    @player_2_name = params[:player_2_name]
+    erb :play
+  end
+
+
+  get '/' do
     erb :register_player
   end
 
@@ -16,15 +27,15 @@ class App < Sinatra::Base
     redirect '/play'
   end
 
-  get '/play' do
-    @player_name = session[:player_name]
-    if @player_name.to_s.empty?
-      redirect '/'
-    else
-      erb :play
-    end
-  end
-  
+  # get '/play' do
+  #   @player_name = session[:player_name]
+  #   if @player_name.to_s.empty?
+  #     redirect '/'
+  #   else
+  #     erb :play
+  #   end
+  # end
+
   post '/do_play' do
     game = RpsGame.new
     @computer_move = game.random_move
