@@ -11,30 +11,26 @@ class App < Sinatra::Base
     erb :index
   end
 
-  post '/names' do
-    @player_1_name = params[:player_1_name]
-    @player_2_name = params[:player_2_name]
-    erb :play
-  end
-
-
   get '/' do
     erb :register_player
+  end
+
+  post '/names' do
+    session[:player_1_name] = params[:player_1_name]
+    session[:player_2_name] = params[:player_2_name]
+    redirect :play
+  end
+
+  get '/play' do
+    @player_1_name = session[:player_1_name]
+    @player_2_name = session[:player_2_name]
+    erb :play
   end
 
   post '/do_register' do
     session[:player_name] = params[:player_name]
     redirect '/play'
   end
-
-  # get '/play' do
-  #   @player_name = session[:player_name]
-  #   if @player_name.to_s.empty?
-  #     redirect '/'
-  #   else
-  #     erb :play
-  #   end
-  # end
 
   post '/do_play' do
     game = RpsGame.new
