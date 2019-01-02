@@ -1,10 +1,12 @@
 require 'rps_game'
 
 describe RpsGame do
-  subject(:game) { described_class.new }
+  subject(:game) { described_class.new(player_1, player_2) }
+  let(:player_1) { double 'Rebecca' }
+  let(:player_2) { double :player_2 }
 
   # rock
-  it 'rock beats scissors' do
+  it 'ro_1ck beats scissors' do
     expect(game.move('rock', 'scissors')).to eq RpsGame::P1_WINS
   end
 

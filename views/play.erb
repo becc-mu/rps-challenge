@@ -1,1 +1,14 @@
 <%= @player_1_name %> vs. <%= @player_2_name %>
+
+<h1> <%= @player_2_name %> chose </h1>
+
+<p>
+Let's play!
+</p>
+
+<form action="/do_play" method="POST">
+  <input type=submit name="move" id="move_rock" value="rock" />
+  <input type=submit name="move" id="move_paper" value="paper" />
+  <input type=submit name="move" id="move_scissors" value="scissors" />
+
+</form>

@@ -1,2 +1,17 @@
-<%= @player_1_name %> chose <%= player_1.choice %>
-<%= @player_2_name %> chose <%= player_2.choice %>
+<%= @player_1_name %> chose <%= @user_move %>
+<%= @player_2_name %> chose <%= @computer_move %>
+
+<% if @game.move == :tie %>
+  It's a tie!
+<% elsif @game.move == @game.player_1 %>
+  <%= @game.player_1.name %> wins!
+<% elsif @game.move == @game.player_2 %>
+  <%= @game.player_2.name %> wins!
+<% end %>
+
+
+<form action=/game/choice method="post">
+  <input type="submit" name="move" value="rock">
+  <input type="submit" name="move" value="paper">
+  <input type="submit" name="move" value="scissors">
+</form>

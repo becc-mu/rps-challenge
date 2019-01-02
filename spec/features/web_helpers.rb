@@ -1,4 +1,4 @@
-def sign_in
+def one_player_sign_in
   visit '/'
   fill_in :player_name, with: 'Sam'
   click_button 'Submit'
