@@ -2,7 +2,6 @@ feature 'Play' do
   scenario 'should raise an error' do
     visit '/'
     click_button 'Submit'
-    visit ''
     expect(page).to have_content 'Error! A name must be entered'
   end
 
@@ -13,7 +12,6 @@ feature 'Play' do
 
   scenario 'user can click radio button' do
     sign_in_and_play
-    visit '/play'
     choose('move_rock')
     expect(page).to have_selector("input[value='rock']")
   end
