@@ -1,19 +1,14 @@
 require_relative 'computer'
 class Game
-
-  P1_WINS = 0
-  P2_WINS = 1
-  DRAW    = 2
-
-  MOVES = %w[rock paper scissors].freeze
   WINS = [
-               ['Rock', 'Scissors'],
-               ['Paper', 'Rock'],
-               ['Scissors', 'Paper']
+               ['Rock', 'Paper'],
+               ['Paper', 'Scissors'],
+               ['Scissors', 'Rock']
              ]
+
   attr_reader :player_1, :player_2
 
-  def initialize(player_1, player_2)
+  def initialize(player_1, player_2 = Computer.new)
     @player_1 = player_1
     @player_2 = player_2
   end
@@ -26,13 +21,10 @@ class Game
     @game
   end
 
-  def result(player_1, player_2)
-    if WINS.include? [player_1, player_2]
-      "#{@player_1.name} loses"
-    elsif player_1 == player_2
-      "It's a Draw"
-    else
-      "#{@player_1.name} wins"
-    end
+  def result
+    return @player_2 if WINS.include?([@player_1.choice, @player_2.choice])
+    return @player_1 if WINS.include?([@player_2.choice, @player_1.choice])
+    return :tie
   end
+
 end

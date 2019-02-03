@@ -3,7 +3,6 @@
 require 'sinatra/base'
 require './lib/game'
 require './lib/player'
-require './lib/computer'
 
 class App < Sinatra::Base
   enable :sessions
@@ -13,27 +12,30 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    erb :register_player
+    erb :index
   end
 
   post '/names' do
-    @game = Game.create(Player.new(params[:player_1_name]))
+    player_1 = Player.new(params[:player_name])
+    @game = Game.create(player_1)
     redirect '/play'
   end
 
   get '/play' do
-    @game.player_1.name
-    @game.player_2.name
-    if @game.player_1.name.empty?
-      erb :no_name_error
-    else
-      erb :play
-    end
+    erb :play
   end
 
-  post '/do_play' do
-    @game.player_2.update_rand(params[:choice])
-    @game.player_1.choice = params[:move]
+  get '/play/choice' do
+    erb :choice
+  end
+
+  post '/play/choice' do
+    @game.player_1.update_choice(params[:choice])
+    redirect '/play/result'
+  end
+
+  get '/play/result' do
+    @game.player_2.update_choice(params[:choice])
     erb :result
   end
 
