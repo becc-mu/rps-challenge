@@ -3,15 +3,15 @@ class Computer
   attr_reader :choice, :name
 
   def initialize
-    @name = "Computer"
-    @wins = 0
-    @choice = update_rand
+    @choice = nil
+    @name = "The computer"
   end
 
-  MOVES = %w[rock paper scissors].sample
-
-  def update_rand(*)
-    move_index = Kernel.rand(Game::MOVES.length)
-    @choice = Game::MOVES[move_index]
+  def update_choice(*)
+    num = Kernel.rand(1..3)
+    @choice = 'Rock' if num == 1
+    @choice = 'Paper' if num == 2
+    @choice = 'Scissors' if num == 3
   end
+
 end

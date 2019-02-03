@@ -1,33 +1,21 @@
 require 'computer'
+
 describe Computer do
-
-  let(:computer) { described_class.new }
-  let(:moves) { ['rock', 'paper', 'scissors'] }
-
-  describe '#choose_move' do
-    moves = %w[rock paper scissors]
-    it 'generates a random move' do
-      expect(moves).to include(computer.update_rand)
-    end
-
-    it 'generates computer\'s move' do
-      computer.update_rand
-      expect(computer.choice).to include computer.choice
-    end
-    it 'returns computer\'s random move when rock' do
-      allow(Kernel).to receive(:rand) { 0 }
-      computer.update_rand
-      expect(computer.choice).to eq 'rock'
-    end
-    it 'returns computer\'s random move when paper' do
+  context 'when asked to pick an option' do
+    it 'returns a random choice of rock, paper or scissors' do
       allow(Kernel).to receive(:rand) { 1 }
-      computer.update_rand
-      expect(computer.choice).to eq 'paper'
+      subject.update_choice
+      expect(subject.choice).to eq 'Rock'
     end
-    it 'returns computer\'s random move when scissors' do
+    it 'returns a random choice of paper' do
       allow(Kernel).to receive(:rand) { 2 }
-      computer.update_rand
-      expect(computer.choice).to eq 'scissors'
+      subject.update_choice
+      expect(subject.choice).to eq 'Paper'
+    end
+    it 'returns a random choice of scissors' do
+      allow(Kernel).to receive(:rand) { 3 }
+      subject.update_choice
+      expect(subject.choice).to eq 'Scissors'
     end
   end
 end

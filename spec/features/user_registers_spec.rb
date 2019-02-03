@@ -3,9 +3,9 @@ feature 'Player registers' do
     sign_in
     visit '/play'
     expect(page).to have_content 'Sam'
+    expect(page).to have_selector("input[value='Rock']")
+    expect(page).to have_selector("input[value='Paper']")
+    expect(page).to have_selector("input[value='Scissors']")
 
-    expect(page).to have_field('move_rock', with: 'rock')
-    expect(page).to have_field('move_paper', with: 'paper')
-    expect(page).to have_field('move_scissors', with: 'scissors')
   end
 end
