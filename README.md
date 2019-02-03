@@ -64,6 +64,6 @@ The application is built using OOD and TDD to ensure the features and functional
 
 ![Login page](https://github.com/becc-mu/rps-challenge/blob/player_vs_computer/public/Screen%20Shot%202019-01-05%20at%2004.23.41.png)
 
-![choose options](https://github.com/becc-mu/rps-challenge/blob/player_vs_computer/public/Screen%20Shot%202019-01-05%20at%2004.25.03.png)
+![choose options](https://github.com/becc-mu/rps-challenge/blob/master/public/Screen%20Shot%20scissors.png)
 
 ![winner declared](https://github.com/becc-mu/rps-challenge/blob/player_vs_computer/public/Screen%20Shot%202019-01-05%20at%2004.25.40.png)
